@@ -29,6 +29,13 @@ def failed():
 def unknown():
     return "UNKNOWN"
 
+@app.route("/search", method = ["POST"])
+def search():
+    keyword = request.form["search"]
+    keywords = keyword.split(" ")
+    lists = db.search(keywords)
+    return render_template("search_result.html", )
+
 @app.route("/regist", methods = ["POST"])
 def regist():
     account = request.form["account"]
